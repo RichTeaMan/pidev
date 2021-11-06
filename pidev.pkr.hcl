@@ -80,8 +80,7 @@ build {
       "echo ${local.hostname} > /etc/hostname",
       "echo \"127.0.0.1   ${local.hostname}\" >> /etc/hosts",
 
-      "cp /tmp/rc.local /etc/rc.local",
-      "systemctl enable ssh"
+      "cp /tmp/rc.local /etc/rc.local"
     ]
   }
   provisioner "shell" {
@@ -115,7 +114,8 @@ build {
       echo "export GPG_TTY=\"\$(tty)\"" > ~/.bashrc'
       EOF
       ,
-      "cat /home/${local.username}/.bashrc"
+      "cat /home/${local.username}/.bashrc",
+      "systemctl enable ssh"
     ]
   }
 }
